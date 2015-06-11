@@ -54,7 +54,8 @@ module.exports = generators.Base.extend({
 
     packageJSON.devDependencies = assign({}, {
       'babel-eslint': "^3.1.14",
-      eslint: "^0.22.1"
+      eslint: "^0.22.1",
+      'eslint-plugin-private-variables': '^0.1.0'
     }, packageJSON.devDependencies || {});
 
     fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2));

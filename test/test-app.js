@@ -41,7 +41,8 @@ describe('react-material-ui:page', function () {
             },
             devDependencies: {
               'babel-eslint': "^3.1.14",
-              eslint: "^0.22.1"
+              eslint: "^0.22.1",
+              'eslint-plugin-private-variables': '^0.1.0'
             }
           }, null, 2));
           done();
@@ -86,7 +87,8 @@ describe('react-material-ui:page', function () {
             devDependencies: {
               foo: '^0.1.0',
               'babel-eslint': '^3.1.14',
-              eslint: '^0.22.1'
+              eslint: '^0.22.1',
+              'eslint-plugin-private-variables': '^0.1.0'
             }
           };
           expect(actual).to.eql(expected);
