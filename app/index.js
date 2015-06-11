@@ -44,11 +44,11 @@ module.exports = generators.Base.extend({
     packageJSON.eslintConfig = assign({}, packageJSON.eslintConfig || {}, {
       parser: 'babel-eslint',
       plugins: [
-        'privacy'
+        'private-variables'
       ],
       rules: {
         'no-underscore-dangle': false,
-        'privacy/no-access': [2, 'class-only']
+        'private-variables/no-access': [2, 'class-only']
       }
     });
 

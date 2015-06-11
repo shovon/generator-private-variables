@@ -32,11 +32,11 @@ describe('react-material-ui:page', function () {
             eslintConfig: {
               parser: 'babel-eslint',
               plugins: [
-                'privacy'
+                'private-variables'
               ],
               rules: {
                 'no-underscore-dangle': false,
-                'privacy/no-access': [2, 'class-only']
+                'private-variables/no-access': [2, 'class-only']
               }
             },
             devDependencies: {
@@ -76,11 +76,11 @@ describe('react-material-ui:page', function () {
             eslintConfig: {
               parser: 'babel-eslint',
               plugins: [
-                'privacy'
+                'private-variables'
               ],
               rules: {
                 'no-underscore-dangle': false,
-                'privacy/no-access': [2, 'class-only']
+                'private-variables/no-access': [2, 'class-only']
               }
             },
             devDependencies: {
