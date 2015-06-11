@@ -7,13 +7,22 @@ var path = require('path');
 
 var helpers = generators.test;
 
+function isFile(filePath) {
+  try {
+    var stats = fs.lstatSync(filePath);
+    return stats.isFile();
+  } catch (e) {}
+
+  return false;
+}
+
 module.exports = generators.Base.extend({
   writing: function () {
     var packagePath = this.destinationPath('package.json');
     var packageJSON = {};
 
     if (fs.existsSync(packagePath)) {
-      if (!isFile(filePath)) {
+      if (!isFile(packagePath)) {
         throw new Error('package.json exists but it is not a file');
       }
 
@@ -22,7 +31,7 @@ module.exports = generators.Base.extend({
 
     var scriptsObject;
 
-    if (packageJSON.scripts && pacakageJSON.scripts.lint) {
+    if (packageJSON.scripts && packageJSON.scripts.lint) {
       packageJSON.scripts = assign({}, packageJSON.scripts || {}, {
         lint2: "eslint ./*.js"
       })
@@ -34,9 +43,6 @@ module.exports = generators.Base.extend({
 
     packageJSON.eslintConfig = assign({}, packageJSON.eslintConfig || {}, {
       parser: 'babel-eslint',
-      env: {
-        node: 'true'
-      },
       plugins: [
         'privacy'
       ],
@@ -46,10 +52,10 @@ module.exports = generators.Base.extend({
       }
     });
 
-    packageJSON.devDependencies = assign({}, packageJSON.devDependencies || {}, {
+    packageJSON.devDependencies = assign({}, {
       'babel-eslint': "^3.1.14",
       eslint: "^0.22.1"
-    });
+    }, packageJSON.devDependencies || {});
 
     fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2));
   },
